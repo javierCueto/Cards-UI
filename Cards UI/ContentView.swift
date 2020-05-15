@@ -12,13 +12,11 @@ struct ContentView: View {
     
     //MARK: - properties
     var cards: [Card] = cardData
-    
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false){
+        ScrollView(.horizontal, showsIndicators: true){
             HStack (alignment: .center, spacing: 20){
                 ForEach(cards){ item in
                     CardView(card: item)
-            
                 }
                 
             }.padding(20)
@@ -28,8 +26,15 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        ContentView(cards: cardData)
-            .previewDevice("iPhone 11 Pro")
+        Group {
+            ContentView(cards: cardData)
+                .environment(\.colorScheme, .dark)
+                .previewDevice("iPhone 11 Pro")
+
+        }
+        
+        
     }
 }
